@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABTalks — 60 Day Build Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#/" class="brand"><span class="dot"></span>ABTalks</a>
+            <div class="navlinks-desktop nav-links">
+                <a href="#/">Home</a>
+                <a href="#/dashboard">Dashboard</a>
+                <a href="#/day/12">Today's task</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="4" />
+                        <path
+                            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                    </svg>
+                </button>
+                <a href="#/dashboard" class="btn btn-primary btn-sm hide-mobile">Go to dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ LANDING ============ -->
+    <main id="page-landing" class="app">
+        <div class="wrap">
+            <section class="hero">
+                <div class="eyebrow"><span class="blip"></span>60-DAY BUILD CHALLENGE · FOR STUDENT DEVELOPERS</div>
+                <h1>Build every day.<br>Prove it <em>twice.</em></h1>
+                <p class="lead">Pick a track, ship something small every night, and back it up with a commit and a post.
+                    In 60 days you'll have a public trail recruiters can't scroll past — and a habit that survives
+                    finals week.</p>
+                <div class="hero-ctas">
+                    <a href="#/dashboard" class="btn btn-primary">Start Day 1 →</a>
+                    <a href="#how" class="btn btn-ghost">See how streaks work</a>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-visual-top">
+                        <span class="label mono">your-streak.log</span>
+                        <span class="stat mono">0 / 60 shipped</span>
+                    </div>
+                    <div class="streak-grid" id="heroGrid"></div>
+                </div>
+            </section>
+
+            <div class="stats-bar">
+                <div class="stat-cell">
+                    <div class="num">4,300<span>+</span></div>
+                    <div class="lbl">students on a streak right now</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="num">12</div>
+                    <div class="lbl">tracks to build in</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="num">61<span>%</span></div>
+                    <div class="lbl">finish all 60 days</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="num">40<span>+</span></div>
+                    <div class="lbl">campus placement cells watching</div>
+                </div>
+            </div>
+
+            <section id="how">
+                <div class="section-head">
+                    <div class="eyebrow"><span class="blip"></span>HOW IT WORKS</div>
+                    <h2>Three things happen, in order, every single day.</h2>
+                    <p>No lectures, no fixed timings. Just a task, a deadline, and receipts.</p>
+                </div>
+                <div class="steps">
+                    <div class="step-card">
+                        <div class="step-num">01</div>
+                        <h3>Pick your track</h3>
+                        <p>Web dev, DSA, ML, app dev, open source or system design. Switch anytime — the streak doesn't
+                            care what you build, only that you build.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">02</div>
+                        <h3>Build after class</h3>
+                        <p>One focused task per day, scoped to 30–90 minutes. Small enough to finish at 11 PM between
+                            assignments and everything else.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">03</div>
+                        <h3>Prove it before midnight</h3>
+                        <p>Push a commit, post it on LinkedIn, keep the flame alive. Miss the window and the streak
+                            resets — that's the whole mechanism.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section style="margin-top:56px;">
+                <div class="section-head">
+                    <div class="eyebrow"><span class="blip"></span>TRACKS</div>
+                    <h2>Build in the direction you actually want a job in.</h2>
+                </div>
+                <div class="tracks">
+                    <span class="track-chip"><span class="dot"></span>Web Development</span>
+                    <span class="track-chip"><span class="dot"></span>DSA & Problem Solving</span>
+                    <span class="track-chip"><span class="dot"></span>Machine Learning</span>
+                    <span class="track-chip"><span class="dot"></span>App Development</span>
+                    <span class="track-chip"><span class="dot"></span>Open Source</span>
+                    <span class="track-chip"><span class="dot"></span>System Design</span>
+                </div>
+            </section>
+
+            <div class="quote-block">
+                <p>Nobody finishes day 60 because they felt motivated on day 47. They finish because skipping felt worse
+                    than showing up — and a streak everyone can see is what makes skipping feel like that.</p>
+                <div class="attrib">— why the grid, not the grades, is the point</div>
+            </div>
+
+            <div class="final-cta">
+                <h2>Your GitHub is basically a diary no one reads.</h2>
+                <p>Let's fix that — one commit, one post, one day at a time.</p>
+                <a href="#/dashboard" class="btn btn-primary">Start your streak →</a>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-inner">
+                <a href="#/" class="brand"><span class="dot"></span>ABTalks</a>
+                <span class="fmuted">Built for late-night commits. © 2026 ABTalks.</span>
+            </div>
+        </footer>
+    </main>
+
+    <!-- ============ DASHBOARD ============ -->
+    <main id="page-dashboard" class="app">
+        <div class="wrap">
+            <div class="dash-top">
+                <div class="greet">Welcome back<strong>Aarav Sharma</strong></div>
+                <div class="dash-top-actions">
+                    <a href="#/day/12" class="btn btn-primary btn-sm">Open today →</a>
+                    <div class="avatar"></div>
+                </div>
+            </div>
+
+            <div class="dash-grid">
+                <div class="card streak-card">
+                    <span class="card-label">Current streak</span>
+                    <div class="flame-row">
+                        <svg class="flame" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 018 21c-3-1-4.5-3.8-4.5-6.5C3.5 9 8 7 12 2z"
+                                fill="var(--ember)" />
+                        </svg>
+                        <div>
+                            <div class="streak-num mono">11<span style="font-size:20px;color:var(--text-dim);">
+                                    days</span></div>
+                            <div class="streak-sub">One more and you tie your best run.</div>
+                        </div>
+                    </div>
+                    <div class="streak-meta">
+                        <div>
+                            <div class="v mono">14</div>
+                            <div class="k">longest streak</div>
+                        </div>
+                        <div>
+                            <div class="v mono">11 / 11</div>
+                            <div class="k">days submitted</div>
+                        </div>
+                        <div>
+                            <div class="v mono">0</div>
+                            <div class="k">days missed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card task-card">
+                    <div class="task-top">
+                        <span class="card-label">Today's task · Day 12 of 60</span>
+                    </div>
+                    <h3>Build a debounced search bar</h3>
+                    <p>Wire up an input that waits 300ms after typing stops before firing a search — the thing every
+                        real product does and every beginner ships without.</p>
+                    <div class="task-est">⏱ ~60–90 min · Track: Web Development</div>
+                    <a href="#/day/12" class="btn btn-primary btn-block">Open Day 12 →</a>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom:16px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                    <span class="card-label">Challenge progress</span>
+                    <span class="mono" style="font-size:12.5px; color:var(--text-muted);">48 days left</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width:20%;"></div>
+                </div>
+                <div class="progress-row">
+                    <span>Day <span class="mono">12</span> of <span class="mono">60</span></span>
+                    <span class="mono" style="color:var(--mint);">20% complete</span>
+                </div>
+            </div>
+
+            <div class="card grid-card" style="margin-bottom:16px;">
+                <span class="card-label">Your streak grid</span>
+                <div class="streak-grid" id="dashGrid"></div>
+                <div class="legend">
+                    <div><span class="sw" style="background:var(--mint);"></span>Submitted</div>
+                    <div><span class="sw" style="background:var(--ember);"></span>Today</div>
+                    <div><span class="sw"
+                            style="background:var(--surface-2); border:1px solid var(--border);"></span>Upcoming</div>
+                </div>
+            </div>
+
+            <div class="standing-grid" style="margin-bottom:60px;">
+                <div class="card">
+                    <span class="card-label">Cohort standing</span>
+                    <div class="rank-num">#212 <span>of 4,381 students</span></div>
+                    <div class="streak-sub" style="margin-top:8px;">Top 5% this week — up 40 spots since Monday.</div>
+                </div>
+                <div class="card">
+                    <span class="card-label">Achievements</span>
+                    <div class="badges">
+                        <span class="badge">🔥 7-day streak</span>
+                        <span class="badge">⚡ Fast starter</span>
+                        <span class="badge">🧠 DSA x5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============ DAY PAGE ============ -->
+    <main id="page-day" class="app">
+        <div class="wrap">
+            <div class="breadcrumb">
+                <a href="#/dashboard">Dashboard</a><span class="sep">/</span><span class="mono">day-12</span>
+            </div>
+
+            <div class="day-head">
+                <div class="day-tags">
+                    <span class="tag track">Web Development</span>
+                    <span class="tag">⏱ ~60–90 min</span>
+                </div>
+                <h1>Build a debounced search bar</h1>
+                <div class="streak-pill">🔥 11-day streak · submit today to keep it alive</div>
+            </div>
+
+            <div class="day-layout">
+                <div class="brief">
+                    <h4>The task</h4>
+                    <p>Every product with a search box has the same problem: firing a request on every keystroke murders
+                        your backend and your UX. Today you're building the fix — a search input that waits until the
+                        user actually stops typing before it does anything.</p>
+
+                    <h4>What to build</h4>
+                    <ul class="checklist">
+                        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5" />
+                                </svg></span>A text input with a live results list below it, using any dummy dataset.
+                        </li>
+                        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5" />
+                                </svg></span>A debounce of 300ms so the search only runs after typing pauses.</li>
+                        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5" />
+                                </svg></span>A loading state while the "search" is in flight.</li>
+                        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5" />
+                                </svg></span>An empty state for zero matches — don't just show a blank list.</li>
+                    </ul>
+
+                    <h4>A nudge, not a solution</h4>
+                    <div class="resource-box">
+                        Debouncing means: reset a timer on every keystroke, and only act once the timer finishes
+                        uninterrupted. Look up <code>setTimeout</code> + <code>clearTimeout</code>, or write your own
+                        <code>useDebounce</code> if you're on React. Don't reach for a library today — build the
+                        mechanism once so you understand it.
+                    </div>
+                </div>
+
+                <div class="card submit-card">
+                    <h3>Submit Day 12</h3>
+                    <p>Both links are required to keep your streak. We check that they're public before marking the day
+                        complete.</p>
+
+                    <div class="field">
+                        <label>GitHub repo / commit <span class="req">REQUIRED</span></label>
+                        <input type="url" id="ghInput" placeholder="github.com/aarav/day-12-search">
+                        <div class="field-hint">Link the commit or repo where today's code lives.</div>
+                    </div>
+
+                    <div class="field">
+                        <label>LinkedIn post <span class="req">REQUIRED</span></label>
+                        <input type="url" id="liInput" placeholder="linkedin.com/posts/aarav-...">
+                        <div class="field-hint">Post what you built and tag #ABTalks60 so recruiters can find the trail.
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" id="submitBtn">Submit Day 12</button>
+
+                    <div class="submit-status" id="submitStatus">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        <span>Day 12 logged. Streak is now <strong class="mono">12 days</strong> — see you
+                            tomorrow.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-nav">
+                <a href="#/dashboard">← Back to dashboard</a>
+                <span class="mono" style="font-size:12px;color:var(--text-dim);">day 12 / 60</span>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
