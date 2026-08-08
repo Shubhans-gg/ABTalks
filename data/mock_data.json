@@ -1,0 +1,411 @@
+{
+  "student": {
+    "name": "Arjun Sharma",
+    "initials": "AS",
+    "email": "arjun.sharma@iitd.ac.in",
+    "college": "IIT Delhi",
+    "track": "Full Stack Development",
+    "track_icon": "🚀",
+    "current_day": 12,
+    "streak": 6,
+    "best_streak": 6,
+    "total_completed": 10,
+    "total_days": 60,
+    "shields_total": 2,
+    "shields_used": 0,
+    "github_username": "arjunsharma-dev",
+    "linkedin_username": "arjun-sharma-dev",
+    "xp": 2450,
+    "rank": 23,
+    "total_participants": 1247,
+    "joined": "2026-06-28",
+    "badges": [
+      {
+        "name": "First Commit",
+        "icon": "🎯",
+        "description": "Made your first submission",
+        "earned_on": "2026-06-28"
+      },
+      {
+        "name": "Week Warrior",
+        "icon": "⚔️",
+        "description": "Completed 7 days in a row",
+        "earned_on": "2026-07-05"
+      },
+      {
+        "name": "Bug Squasher",
+        "icon": "🐛",
+        "description": "Fixed a tricky bug and documented it",
+        "earned_on": "2026-07-08"
+      }
+    ]
+  },
+  "days": [
+    {
+      "day": 1,
+      "title": "Environment Setup & Hello World",
+      "description": "Set up your development environment with VS Code, Node.js, and Git. Create your first HTML page and push it to a public GitHub repository. This is your foundation — every great project starts with a solid setup.",
+      "objectives": [
+        "Install VS Code, Node.js (LTS), and Git",
+        "Create a simple HTML page with your name and a greeting",
+        "Initialize a Git repo, commit, and push to GitHub",
+        "Write your first LinkedIn post about starting the challenge"
+      ],
+      "resources": [
+        "VS Code Download — https://code.visualstudio.com",
+        "Node.js Download — https://nodejs.org",
+        "Git Handbook — https://guides.github.com/introduction/git-handbook"
+      ],
+      "difficulty": "Easy",
+      "estimated_time": "1-2 hours",
+      "xp_reward": 100,
+      "status": "completed",
+      "submitted_at": "2026-06-28T22:15:00",
+      "github_url": "https://github.com/arjunsharma-dev/60days-fullstack/commit/a1b2c3d",
+      "linkedin_url": "https://linkedin.com/posts/arjun-sharma-dev_day1-abtalks"
+    },
+    {
+      "day": 2,
+      "title": "HTML & Semantic Markup",
+      "description": "Build a structured personal portfolio page using semantic HTML5 elements. Learn why semantic markup matters for accessibility and SEO. Your portfolio will evolve throughout this challenge.",
+      "objectives": [
+        "Use semantic tags: header, nav, main, section, article, footer",
+        "Create a navigation menu with anchor links",
+        "Build an About, Projects, and Contact section",
+        "Validate your HTML using the W3C validator"
+      ],
+      "resources": [
+        "MDN Semantic HTML — https://developer.mozilla.org/en-US/docs/Glossary/Semantics",
+        "W3C HTML Validator — https://validator.w3.org"
+      ],
+      "difficulty": "Easy",
+      "estimated_time": "2 hours",
+      "xp_reward": 100,
+      "status": "completed",
+      "submitted_at": "2026-06-29T21:30:00",
+      "github_url": "https://github.com/arjunsharma-dev/60days-fullstack/commit/d4e5f6g",
+      "linkedin_url": "https://linkedin.com/posts/arjun-sharma-dev_day2-abtalks"
+    },
+    {
+      "day": 3,
+      "title": "CSS Fundamentals & Flexbox",
+      "description": "Style your portfolio with modern CSS. Master Flexbox for building flexible, responsive layouts. Learn the box model, selectors, and CSS custom properties for a consistent design system.",
+      "objectives": [
+        "Style your portfolio with colors, typography, and spacing",
+        "Use CSS custom properties (variables) for a design system",
+        "Build a responsive navbar and card layout with Flexbox",
+        "Add hover transitions on interactive elements"
+      ],
+      "resources": [
+        "Flexbox Froggy — https://flexboxfroggy.com",
+        "CSS Tricks Flexbox Guide — https://css-tricks.com/snippets/css/a-guide-to-flexbox"
+      ],
+      "difficulty": "Easy",
+      "estimated_time": "2-3 hours",
+      "xp_reward": 150,
+      "status": "completed",
+      "submitted_at": "2026-06-30T23:10:00",
+      "github_url": "https://github.com/arjunsharma-dev/60days-fullstack/commit/g7h8i9j",
+      "linkedin_url": "https://linkedin.com/posts/arjun-sharma-dev_day3-abtalks"
+    },
+    {
+      "day": 4,
+      "title": "JavaScript Basics & DOM",
+      "description": "Bring your portfolio to life with JavaScript. Learn the fundamentals of the language and how to manipulate the DOM to create interactive user experiences.",
+      "objectives": [
+        "Understand variables, functions, arrays, and objects",
+        "Select and modify DOM elements dynamically",
+        "Add event listeners for clicks, hovers, and keyboard input",
+        "Build a dark mode toggle for your portfolio"
+      ],
+      "resources": [
+        "JavaScript.info — https://javascript.info",
+        "MDN DOM Introduction — https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction"
+      ],
+      "difficulty": "Medium",
+      "estimated_time": "2-3 hours",
+      "xp_reward": 200,
+      "status": "completed",
+      "submitted_at": "2026-07-01T22:45:00",
+      "github_url": "https://github.com/arjunsharma-dev/60days-fullstack/commit/k1l2m3n",
+      "linkedin_url": "https://linkedin.com/posts/arjun-sharma-dev_day4-abtalks"
+    },
+    {
+      "day": 5,
+      "title": "Responsive Design & Media Queries",
+      "description": "Make your portfolio fully responsive. Learn mobile-first design principles, media queries, and viewport units to ensure your site looks great on every screen size.",
+      "objectives": [
+        "Implement mobile-first CSS with min-width media queries",
+        "Use relative units (rem, em, %, vw, vh) instead of fixed px",
+        "Create a responsive navigation (hamburger menu on mobile)",
+        "Test across multiple screen sizes using DevTools"
+      ],
+      "resources": [
+        "Responsive Design MDN — https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design",
+        "Chrome DevTools Device Mode — https://developer.chrome.com/docs/devtools/device-mode"
+      ],
+      "difficulty": "Medium",
+      "estimated_time": "2 hours",
+      "xp_reward": 200,
+      "status": "missed",
+      "missed_reason": "College exam preparation"
+    },
+    {
+      "day": 6,
+      "title": "Git Workflow & Collaboration",
+      "description": "Master the Git workflow used in real teams. Learn branching strategies, how to handle merge conflicts, and how to write meaningful commit messages that tell a story.",
+      "objectives": [
+        "Create feature branches and merge them to main",
+        "Simulate and resolve a merge conflict",
+        "Write conventional commit messages (feat:, fix:, docs:)",
+        "Set up a .gitignore for your project"
+      ],
+      "resources": [
+        "Conventional Commits — https://www.conventionalcommits.org",
+        "Learn Git Branching — https://learngitbranching.js.org"
+      ],
+      "difficulty": "Easy",
+      "estimated_time": "1-2 hours",
+      "xp_reward": 150,
+      "status": "completed",
+      "submitted_at": "2026-07-03T20:30:00",
+      "github_url": "https://github.com/arjunsharma-dev/60days-fullstack/commit/o4p5q6r",
+      "linkedin_url": "https://linkedin.com/posts/arjun-sharma-dev_day6-abtalks"
+    },
+    {
+      "day": 7,
+      "title": "CSS Grid & Advanced Layouts",
+      "description": "Level up your layout skills with CSS Grid. Build complex, two-dimensional layouts that would be impossible with Flexbox alone. Redesign your portfolio's project showcase section.",
+      "objectives": [
+        "Create a responsive grid layout for project cards",
+        "Use grid-template-areas for semantic layouts",
+        "Combine Grid and Flexbox for maximum flexibility",
+        "Add CSS animations to your project cards"
+      ],
+      "resources": [
+        "CSS Grid Garden — https://cssgridgarden.com",
+        "CSS Tricks Grid Guide — https://css-tricks.com/snippets/css/complete-guide-grid"
+      ],
+      "difficulty": "Medium",
+      "estimated_time": "2-3 hours",
+      "xp_reward": 200,
+      "status": "completed",
+      "submitted_at": "2026-07-04T21:15:00",
+      "github_url": "https://github.com/arjunsharma-dev/60days-fullstack/commit/s7t8u9v",
+      "linkedin_url": "https://linkedin.com/posts/arjun-sharma-dev_day7-abtalks"
+    },
+    {
+      "day": 8,
+      "title": "Introduction to React",
+      "description": "Enter the world of modern frontend frameworks. Set up a React project, understand JSX, and build your first components. This is where your projects start feeling like real applications.",
+      "objectives": [
+        "Create a new React project with Vite",
+        "Understand JSX syntax and how it compiles",
+        "Build functional components for Header, Footer, and Card",
+        "Pass and render data using props"
+      ],
+      "resources": [
+        "React Official Docs — https://react.dev",
+        "Vite Getting Started — https://vitejs.dev/guide"
+      ],
+      "difficulty": "Medium",
+      "estimated_time": "3 hours",
+      "xp_reward": 250,
+      "status": "completed",
+      "submitted_at": "2026-07-05T23:00:00",
+      "github_url": "https://github.com/arjunsharma-dev/60days-fullstack/commit/w1x2y3z",
+      "linkedin_url": "https://linkedin.com/posts/arjun-sharma-dev_day8-abtalks"
+    },
+    {
+      "day": 9,
+      "title": "React Components & Composition",
+      "description": "Master component architecture. Learn to break down UIs into reusable components, use composition patterns, and pass children to create flexible layouts.",
+      "objectives": [
+        "Break your UI into a clear component hierarchy",
+        "Use children props for layout components",
+        "Create a reusable Button component with variants",
+        "Implement conditional rendering patterns"
+      ],
+      "resources": [
+        "Thinking in React — https://react.dev/learn/thinking-in-react",
+        "Component Composition — https://react.dev/learn/passing-props-to-a-component"
+      ],
+      "difficulty": "Medium",
+      "estimated_time": "2-3 hours",
+      "xp_reward": 200,
+      "status": "completed",
+      "submitted_at": "2026-07-06T22:20:00",
+      "github_url": "https://github.com/arjunsharma-dev/60days-fullstack/commit/a4b5c6d",
+      "linkedin_url": "https://linkedin.com/posts/arjun-sharma-dev_day9-abtalks"
+    },
+    {
+      "day": 10,
+      "title": "State Management & Hooks",
+      "description": "Learn to manage dynamic data in React with useState and useEffect. Build interactive features like counters, form inputs, and data fetching with proper cleanup.",
+      "objectives": [
+        "Use useState for local component state",
+        "Use useEffect for side effects and data fetching",
+        "Lift state up to share data between components",
+        "Handle loading and error states gracefully"
+      ],
+      "resources": [
+        "Managing State — https://react.dev/learn/managing-state",
+        "useEffect Guide — https://react.dev/learn/synchronizing-with-effects"
+      ],
+      "difficulty": "Hard",
+      "estimated_time": "3 hours",
+      "xp_reward": 300,
+      "status": "completed",
+      "submitted_at": "2026-07-07T23:55:00",
+      "github_url": "https://github.com/arjunsharma-dev/60days-fullstack/commit/e7f8g9h",
+      "linkedin_url": "https://linkedin.com/posts/arjun-sharma-dev_day10-abtalks"
+    },
+    {
+      "day": 11,
+      "title": "API Integration & Data Fetching",
+      "description": "Connect your React app to the real world. Learn to fetch data from REST APIs, handle async operations, and display dynamic content with proper loading and error handling.",
+      "objectives": [
+        "Fetch data from a public API using fetch()",
+        "Display API data in a clean, styled list/grid",
+        "Implement loading spinners and error messages",
+        "Add search/filter functionality on fetched data"
+      ],
+      "resources": [
+        "Fetch API MDN — https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API",
+        "Public APIs List — https://github.com/public-apis/public-apis"
+      ],
+      "difficulty": "Medium",
+      "estimated_time": "2-3 hours",
+      "xp_reward": 250,
+      "status": "completed",
+      "submitted_at": "2026-07-08T21:40:00",
+      "github_url": "https://github.com/arjunsharma-dev/60days-fullstack/commit/i1j2k3l",
+      "linkedin_url": "https://linkedin.com/posts/arjun-sharma-dev_day11-abtalks"
+    },
+    {
+      "day": 12,
+      "title": "Build a REST API with Express",
+      "description": "Switch to the backend. Build a complete REST API with Node.js and Express. Learn routing, middleware, request handling, and how to structure a backend project professionally.",
+      "objectives": [
+        "Set up an Express.js server with proper project structure",
+        "Create CRUD endpoints (GET, POST, PUT, DELETE)",
+        "Implement middleware for logging and error handling",
+        "Test your API endpoints with Postman or Thunder Client"
+      ],
+      "resources": [
+        "Express.js Guide — https://expressjs.com/en/guide/routing.html",
+        "REST API Design — https://restfulapi.net",
+        "Thunder Client VS Code — https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client"
+      ],
+      "difficulty": "Hard",
+      "estimated_time": "3 hours",
+      "xp_reward": 300,
+      "status": "current"
+    },
+    {
+      "day": 13,
+      "title": "Database Design with MongoDB",
+      "description": "Learn NoSQL database fundamentals with MongoDB. Design schemas using Mongoose, connect your Express API to a database, and implement persistent data storage.",
+      "objectives": [
+        "Set up MongoDB Atlas (free tier) cloud database",
+        "Design Mongoose schemas and models",
+        "Connect Express API to MongoDB",
+        "Implement database CRUD operations"
+      ],
+      "resources": [
+        "MongoDB University — https://university.mongodb.com",
+        "Mongoose Docs — https://mongoosejs.com/docs/guide.html"
+      ],
+      "difficulty": "Hard",
+      "estimated_time": "3 hours",
+      "xp_reward": 300,
+      "status": "locked"
+    },
+    {
+      "day": 14,
+      "title": "Authentication & JWT Security",
+      "description": "Implement secure user authentication. Learn about password hashing, JSON Web Tokens, and protected routes to build applications that handle user identity safely.",
+      "objectives": [
+        "Hash passwords with bcrypt before storing",
+        "Generate and verify JWT tokens for sessions",
+        "Create login and registration endpoints",
+        "Protect routes with authentication middleware"
+      ],
+      "resources": [
+        "JWT.io — https://jwt.io/introduction",
+        "OWASP Auth Cheatsheet — https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html"
+      ],
+      "difficulty": "Hard",
+      "estimated_time": "3 hours",
+      "xp_reward": 300,
+      "status": "locked"
+    }
+  ],
+  "tracks": [
+    {
+      "name": "Full Stack Development",
+      "icon": "🚀",
+      "color": "#8b5cf6",
+      "students": 423,
+      "description": "Build complete web applications from frontend to backend. HTML, CSS, JavaScript, React, Node.js, databases, and deployment."
+    },
+    {
+      "name": "AI & Machine Learning",
+      "icon": "🤖",
+      "color": "#06b6d4",
+      "students": 312,
+      "description": "Learn ML fundamentals, build models with Python, and deploy intelligent applications. NumPy, Pandas, TensorFlow, and more."
+    },
+    {
+      "name": "Mobile Development",
+      "icon": "📱",
+      "color": "#10b981",
+      "students": 287,
+      "description": "Create cross-platform mobile apps with React Native or Flutter. UI design, navigation, APIs, and app store deployment."
+    },
+    {
+      "name": "DevOps & Cloud",
+      "icon": "☁️",
+      "color": "#f59e0b",
+      "students": 225,
+      "description": "Master CI/CD pipelines, Docker, Kubernetes, and cloud platforms. Deploy and scale applications like a pro."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Priya Patel",
+      "college": "NIT Surat",
+      "track": "Full Stack Development",
+      "avatar_initials": "PP",
+      "quote": "Before ABTalks, I had zero projects on my GitHub. 60 days later, I had a portfolio that got me an internship at a Bangalore startup. The daily consistency changed everything.",
+      "streak_completed": 58,
+      "outcome": "Secured SDE Intern at a Series A startup"
+    },
+    {
+      "name": "Rohit Menon",
+      "college": "VIT Vellore",
+      "track": "AI & Machine Learning",
+      "avatar_initials": "RM",
+      "quote": "The LinkedIn posts from the challenge got me 12K impressions in a month. Two recruiters reached out directly. Building in public works — ABTalks made it a habit.",
+      "streak_completed": 54,
+      "outcome": "ML Intern at a Big 4 consulting firm"
+    },
+    {
+      "name": "Sneha Gupta",
+      "college": "BITS Pilani",
+      "track": "DevOps & Cloud",
+      "avatar_initials": "SG",
+      "quote": "I used to start projects and abandon them after 3 days. The streak system and the community kept me accountable. I completed all 60 days and learned more than an entire semester.",
+      "streak_completed": 60,
+      "outcome": "Full 60-day streak, AWS certified"
+    }
+  ],
+  "stats": {
+    "total_students": 1247,
+    "total_commits": 38420,
+    "total_linkedin_posts": 29100,
+    "colleges": 45,
+    "avg_streak": 34,
+    "completion_rate": 72
+  }
+}

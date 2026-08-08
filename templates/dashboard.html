@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — AB Talks{% endblock %}
+{% block meta_description %}Track your 60-day coding challenge progress. View your streak, today's task, and achievements.{% endblock %}
+
+{% block body %}
+
+<!-- ═══ TOP BAR ═══ -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="logo">AB <span>TALKS</span></a>
+    <div class="topbar-nav">
+      <span class="badge badge-cyan">{{ student.track }}</span>
+      <div class="avatar-sm">{{ student.initials }}</div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ═══ DASHBOARD ═══ -->
+<div class="page-wrapper">
+  <div class="container">
+
+    <!-- Greeting -->
+    <div class="dashboard-header page-enter">
+      <h1 class="greeting">Hey, {{ student.name.split(' ')[0] }} 👋</h1>
+      <p class="greeting-subtitle">Day {{ student.current_day }} of 60 · {{ student.track }}</p>
+    </div>
+
+    <div class="dashboard-grid">
+
+      <!-- ─── Streak Card ─── -->
+      <div class="streak-card page-enter" style="animation-delay: 0.1s;">
+        <div>
+          <div class="streak-display">
+            <span class="streak-fire">🔥</span>
+            <div>
+              <div class="streak-number">{{ student.streak }}</div>
+              <div class="streak-label">day streak</div>
+            </div>
+          </div>
+        </div>
+        <div class="progress-ring-container">
+          <svg class="progress-ring" width="120" height="120" viewBox="0 0 120 120">
+            <defs>
+              <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color: #8b5cf6;" />
+                <stop offset="100%" style="stop-color: #22d3ee;" />
+              </linearGradient>
+            </defs>
+            <circle class="progress-ring-bg" cx="60" cy="60" r="50" />
+            {% set circumference = 314.159 %}
+            {% set progress = (student.total_completed / student.total_days) * 100 %}
+            {% set dashoffset = circumference - (progress / 100) * circumference %}
+            <circle class="progress-ring-fill"
+                    cx="60" cy="60" r="50"
+                    stroke-dasharray="{{ circumference }}"
+                    stroke-dashoffset="{{ dashoffset }}"
+                    data-target="{{ dashoffset }}" />
+          </svg>
+          <div class="progress-ring-text">
+            <span class="progress-ring-value">{{ student.total_completed }}</span>
+            <span class="progress-ring-label">of {{ student.total_days }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Today's Task ─── -->
+      {% set today = namespace(day=none) %}
+      {% for d in days %}
+        {% if d.status == 'current' %}
+          {% set today.day = d %}
+        {% endif %}
+      {% endfor %}
+
+      {% if today.day %}
+      <div class="today-card page-enter" style="animation-delay: 0.2s;">
+        <div class="today-card-header">
+          <span class="section-label" style="margin-bottom: 0;">Today's Challenge</span>
+          <span class="badge badge-amber">+{{ today.day.xp_reward }} XP</span>
+        </div>
+        <h3>Day {{ today.day.day }}: {{ today.day.title }}</h3>
+        <p>{{ today.day.description[:120] }}...</p>
+        <div class="today-meta">
+          <span class="today-meta-item">
+            ⏱️ {{ today.day.estimated_time }}
+          </span>
+          <span class="today-meta-item difficulty-{{ today.day.difficulty | lower }}">
+            📊 {{ today.day.difficulty }}
+          </span>
+        </div>
+        <a href="/day/{{ today.day.day }}" class="btn btn-primary btn-block">
+          Start Day {{ today.day.day }} →
+        </a>
+      </div>
+      {% endif %}
+
+      <!-- ─── XP & Rank Row ─── -->
+      <div class="xp-rank-row page-enter" style="animation-delay: 0.3s; grid-column: 1 / -1;">
+        <div class="xp-card">
+          <div class="xp-value gradient-text">{{ '{:,}'.format(student.xp) }}</div>
+          <div class="xp-label">Total XP</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-value" style="color: var(--accent-amber);">#{{ student.rank }}</div>
+          <div class="rank-label">of {{ '{:,}'.format(student.total_participants) }}</div>
+        </div>
+      </div>
+
+      <!-- ─── Streak Shields ─── -->
+      <div class="shield-card page-enter" style="animation-delay: 0.35s; grid-column: 1 / -1;">
+        <span class="shield-icon">🛡️</span>
+        <div class="shield-info">
+          <div class="shield-info-title">Streak Shields</div>
+          <div class="shield-info-desc">Protect your streak if you miss a day</div>
+        </div>
+        <div class="shield-count">
+          {% for i in range(student.shields_total) %}
+            {% if i < (student.shields_total - student.shields_used) %}
+              <span class="shield-pip"></span>
+            {% else %}
+              <span class="shield-pip used"></span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- ─── Weekly Progress ─── -->
+      <div class="week-section page-enter" style="animation-delay: 0.4s;">
+        <h4>This Week</h4>
+        <div class="week-grid">
+          {% set week_days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'] %}
+          {% for d in days[-7:] if days | length >= 7 %}
+          <a href="/day/{{ d.day }}" class="day-dot {{ d.status }}">
+            <span class="day-dot-num">{{ d.day }}</span>
+            <span class="day-dot-indicator">
+              {% if d.status == 'completed' %}✓
+              {% elif d.status == 'missed' %}✕
+              {% elif d.status == 'current' %}◉
+              {% else %}🔒{% endif %}
+            </span>
+            <span class="day-dot-label">{{ week_days[loop.index0 % 7] }}</span>
+          </a>
+          {% endfor %}
+          {% if days | length < 7 %}
+            {% for d in days %}
+            <a href="/day/{{ d.day }}" class="day-dot {{ d.status }}">
+              <span class="day-dot-num">{{ d.day }}</span>
+              <span class="day-dot-indicator">
+                {% if d.status == 'completed' %}✓
+                {% elif d.status == 'missed' %}✕
+                {% elif d.status == 'current' %}◉
+                {% else %}🔒{% endif %}
+              </span>
+              <span class="day-dot-label">{{ week_days[loop.index0 % 7] }}</span>
+            </a>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- ─── All Days Progress ─── -->
+      <div class="week-section page-enter" style="animation-delay: 0.45s;">
+        <h4>Challenge Progress</h4>
+        <div class="progress-stats">
+          <div class="progress-stat-row">
+            <span class="progress-stat-label">Days Completed</span>
+            <span class="progress-stat-value status-completed">{{ student.total_completed }}/{{ student.total_days }}</span>
+          </div>
+          <div class="progress-stat-row">
+            <span class="progress-stat-label">Days Missed</span>
+            <span class="progress-stat-value status-missed">{{ days | selectattr('status', 'equalto', 'missed') | list | length }}</span>
+          </div>
+          <div class="progress-stat-row">
+            <span class="progress-stat-label">Best Streak</span>
+            <span class="progress-stat-value" style="color: var(--accent-amber);">🔥 {{ student.best_streak }} days</span>
+          </div>
+          <div class="progress-stat-row">
+            <span class="progress-stat-label">Completion Rate</span>
+            {% set completion = ((student.total_completed / student.current_day) * 100) | round | int %}
+            <span class="progress-stat-value" style="color: var(--accent-cyan);">{{ completion }}%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Badges ─── -->
+      <div class="badges-section page-enter" style="animation-delay: 0.5s;">
+        <h4>Badges Earned</h4>
+        <div class="badges-grid">
+          {% for badge in student.badges %}
+          <div class="badge-item">
+            <span class="badge-item-icon">{{ badge.icon }}</span>
+            <span>{{ badge.name }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ BOTTOM NAV ═══ -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="/" class="nav-item">
+      <span class="nav-item-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="/dashboard" class="nav-item active">
+      <span class="nav-item-icon">📊</span>
+      <span>Dashboard</span>
+    </a>
+    {% if today.day %}
+    <a href="/day/{{ today.day.day }}" class="nav-item">
+      <span class="nav-item-icon">📝</span>
+      <span>Today</span>
+    </a>
+    {% endif %}
+    <a href="#" class="nav-item">
+      <span class="nav-item-icon">👤</span>
+      <span>Profile</span>
+    </a>
+  </div>
+</nav>
+
+{% endblock %}

@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+{% block title %}AB Talks — 60-Day Coding Challenge for Indian Students{% endblock %}
+{% block meta_description %}Join 1,200+ Indian college students in a 60-day coding challenge. Pick a track, build daily, post on LinkedIn, and get noticed by top recruiters.{% endblock %}
+
+{% block body %}
+
+<!-- ═══ TOP BAR ═══ -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="logo">AB <span>TALKS</span></a>
+    <div class="topbar-nav">
+      <a href="/dashboard" class="btn btn-sm btn-secondary">Dashboard</a>
+      <a href="/dashboard" class="btn btn-sm btn-primary">Join Now</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-content page-enter">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      {{ stats.total_students | default('1,200+') }} students building right now
+    </div>
+
+    <h1>
+      60 Days.<br>
+      Build Daily.<br>
+      <span class="gradient-text">Get Noticed.</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      India's most intense coding challenge for college students.
+      Pick a track, ship code every day, post your progress on LinkedIn,
+      and build a portfolio that recruiters can't ignore.
+    </p>
+
+    <div class="hero-cta">
+      <a href="/dashboard" class="btn btn-lg btn-primary">
+        🚀 Start the Challenge
+      </a>
+      <a href="#how-it-works" class="btn btn-lg btn-secondary">
+        How It Works ↓
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ STATS BAR ═══ -->
+<div class="stats-bar reveal">
+  <div class="stat-item">
+    <span class="stat-value gradient-text">{{ stats.total_students | default(1247) }}+</span>
+    <span class="stat-label">Students</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-value gradient-text">{{ stats.total_commits | default('38K') }}+</span>
+    <span class="stat-label">Commits</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-value gradient-text">{{ stats.total_linkedin_posts | default('29K') }}+</span>
+    <span class="stat-label">LinkedIn Posts</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-value gradient-text">{{ stats.colleges | default(45) }}+</span>
+    <span class="stat-label">Colleges</span>
+  </div>
+</div>
+
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <p class="section-label reveal">How It Works</p>
+    <h2 class="section-title reveal">Three steps. Sixty days. One transformation.</h2>
+    <p class="section-subtitle reveal">No fluff, no theory-only courses. Just daily building with real accountability.</p>
+
+    <div class="steps-grid">
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Pick Your Track</h3>
+          <p>Choose from Full Stack, AI/ML, Mobile Dev, or DevOps. Each track has 60 carefully designed daily challenges that build on each other.</p>
+        </div>
+      </div>
+
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Build Every Day</h3>
+          <p>Each day you get a focused task. Commit your code to GitHub and post your progress on LinkedIn. Two simple actions — done in under 3 hours.</p>
+        </div>
+      </div>
+
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Get Noticed</h3>
+          <p>Your public streak becomes your proof of work. Recruiters see consistency, not just credentials. Top performers get featured and referred.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TRACKS ═══ -->
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <p class="section-label reveal">Choose Your Track</p>
+    <h2 class="section-title reveal">Four tracks. Built for Indian campuses.</h2>
+    <p class="section-subtitle reveal">Each track is designed to take you from fundamentals to production-ready skills in 60 days.</p>
+
+    <div class="tracks-grid">
+      {% for track in tracks %}
+      <div class="track-card reveal reveal-delay-{{ loop.index }}">
+        <div class="track-icon" style="background: {{ track.color }}20;">
+          {{ track.icon }}
+        </div>
+        <div class="track-info">
+          <h3>{{ track.name }}</h3>
+          <p>{{ track.description }}</p>
+          <div class="track-meta">
+            <span>👤</span>
+            <span>{{ track.students }} students enrolled</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FEATURES ═══ -->
+<section class="section">
+  <div class="container">
+    <p class="section-label reveal">Why ABTalks</p>
+    <h2 class="section-title reveal">Built different. By design.</h2>
+    <p class="section-subtitle reveal">Not another course. A challenge that actually changes how you work.</p>
+
+    <div class="features-grid">
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">🔥</div>
+        <h3>Streak System</h3>
+        <p>Daily streaks keep you accountable. Miss a day? Use a Streak Shield to protect your progress. Two shields per challenge.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">✍️</div>
+        <h3>LinkedIn Post Generator</h3>
+        <p>Don't know what to post? One click generates a professional LinkedIn post about what you built today. Just copy, paste, publish.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon">🛡️</div>
+        <h3>Streak Shields</h3>
+        <p>Life happens. Exams, festivals, bad days. Use a shield to protect your streak without losing momentum. You get two per challenge.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">📊</div>
+        <h3>XP & Leaderboard</h3>
+        <p>Earn XP for every submission. Harder days give more points. See where you stand among {{ stats.total_students | default(1247) }}+ students.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">🎯</div>
+        <h3>Structured Curriculum</h3>
+        <p>Each day builds on the last. No random tutorials. A complete learning path from setup to deployment in 60 days.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon">👁️</div>
+        <h3>Recruiter Visibility</h3>
+        <p>60 days of public commits + LinkedIn posts = a profile that stands out. Top performers get referred to partner companies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <p class="section-label reveal">Student Stories</p>
+    <h2 class="section-title reveal">Real students. Real outcomes.</h2>
+
+    <div class="testimonials-grid">
+      {% for testimonial in testimonials %}
+      <div class="testimonial-card reveal reveal-delay-{{ loop.index }}">
+        <p class="testimonial-quote">{{ testimonial.quote }}</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: {{ ['var(--gradient-primary)', 'linear-gradient(135deg, #06b6d4, #22c55e)', 'linear-gradient(135deg, #f59e0b, #ef4444)'][loop.index0 % 3] }};">
+            {{ testimonial.avatar_initials }}
+          </div>
+          <div>
+            <div class="testimonial-name">{{ testimonial.name }}</div>
+            <div class="testimonial-detail">{{ testimonial.college }} · {{ testimonial.track }}</div>
+          </div>
+        </div>
+        <div class="testimonial-outcome">
+          ✅ {{ testimonial.outcome }}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section reveal">
+  <div class="container">
+    <h2>Ready to build your <span class="gradient-text">60-day streak?</span></h2>
+    <p>Join {{ stats.total_students | default(1247) }}+ students who chose consistency over comfort.<br>The next cohort starts soon.</p>
+    <a href="/dashboard" class="btn btn-lg btn-primary">
+      🚀 Start the Challenge — It's Free
+    </a>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <p><strong class="logo" style="font-size: 1rem;">AB <span>TALKS</span></strong></p>
+    <p style="margin-top: 8px;">Made for Indian college students who want to build, not just learn.</p>
+    <p style="margin-top: 16px;">© 2026 AB Talks. All rights reserved.</p>
+  </div>
+</footer>
+
+{% endblock %}

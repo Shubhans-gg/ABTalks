@@ -1,0 +1,349 @@
+{% extends "base.html" %}
+
+{% block title %}Day {{ day.day }} — {{ day.title }} — AB Talks{% endblock %}
+{% block meta_description %}Day {{ day.day }} of the 60-day coding challenge: {{ day.title }}. Build, commit, and share your progress.{% endblock %}
+
+{% block body %}
+
+<!-- ═══ TOP BAR ═══ -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="logo">AB <span>TALKS</span></a>
+    <div class="topbar-nav">
+      <a href="/dashboard" class="btn btn-sm btn-ghost">← Dashboard</a>
+      <div class="avatar-sm">{{ student.initials }}</div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ═══ DAY PAGE ═══ -->
+<div class="page-wrapper">
+  <div class="container">
+
+    <!-- Day Navigation -->
+    <div class="day-header page-enter">
+      <div class="day-nav">
+        {% if prev_day %}
+        <a href="/day/{{ prev_day }}" class="day-nav-btn">
+          ← Day {{ prev_day }}
+        </a>
+        {% else %}
+        <span class="day-nav-btn disabled">← Day 0</span>
+        {% endif %}
+
+        <span style="font-size: 0.8125rem; color: var(--text-muted);">{{ day.day }}/60</span>
+
+        {% if next_day and next_day <= 60 %}
+        <a href="/day/{{ next_day }}" class="day-nav-btn">
+          Day {{ next_day }} →
+        </a>
+        {% else %}
+        <span class="day-nav-btn disabled">Day 61 →</span>
+        {% endif %}
+      </div>
+
+      <!-- Day Title -->
+      <div class="day-title-section">
+        <p class="day-number">Day {{ day.day }} of 60</p>
+        <h1 class="day-title">{{ day.title }}</h1>
+        <div class="day-meta">
+          {% if day.difficulty and day.difficulty != 'TBD' %}
+          <span class="day-meta-chip difficulty-{{ day.difficulty | lower }}">
+            📊 {{ day.difficulty }}
+          </span>
+          {% endif %}
+          {% if day.estimated_time and day.estimated_time != 'TBD' %}
+          <span class="day-meta-chip">
+            ⏱️ {{ day.estimated_time }}
+          </span>
+          {% endif %}
+          {% if day.xp_reward %}
+          <span class="day-meta-chip" style="color: var(--accent-amber);">
+            ⚡ {{ day.xp_reward }} XP
+          </span>
+          {% endif %}
+          {% if day.status == 'completed' %}
+          <span class="badge badge-green">✓ Completed</span>
+          {% elif day.status == 'missed' %}
+          <span class="badge badge-rose">✕ Missed</span>
+          {% elif day.status == 'current' %}
+          <span class="badge badge-cyan">◉ Today</span>
+          {% elif day.status == 'locked' %}
+          <span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid var(--border-subtle);">🔒 Locked</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ═══ LOCKED STATE ═══ -->
+    {% if day.status == 'locked' %}
+    <div class="locked-card page-enter" style="animation-delay: 0.2s;">
+      <div class="locked-icon">🔒</div>
+      <h3>This day is locked</h3>
+      <p>Complete the previous days to unlock this challenge. Keep building — you'll get here soon!</p>
+      {% if prev_day %}
+      <a href="/day/{{ prev_day }}" class="btn btn-secondary" style="margin-top: 16px;">
+        ← Go to Day {{ prev_day }}
+      </a>
+      {% endif %}
+    </div>
+
+
+    <!-- ═══ MISSED STATE ═══ -->
+    {% elif day.status == 'missed' %}
+
+    <!-- Task Description -->
+    <div class="task-section page-enter" style="animation-delay: 0.15s;">
+      <div class="task-description">
+        <p>{{ day.description }}</p>
+      </div>
+    </div>
+
+    <!-- Objectives -->
+    {% if day.objectives %}
+    <div class="objectives-card page-enter" style="animation-delay: 0.2s;">
+      <h3>📋 Objectives</h3>
+      {% for obj in day.objectives %}
+      <div class="objective-item">
+        <div class="objective-check">✕</div>
+        <span class="objective-text">{{ obj }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Missed Notice -->
+    <div class="missed-card page-enter" style="animation-delay: 0.3s;">
+      <div class="missed-icon">😔</div>
+      <h3>You missed this day</h3>
+      {% if day.missed_reason %}
+      <p>Reason: {{ day.missed_reason }}</p>
+      {% else %}
+      <p>This day was not completed during the challenge.</p>
+      {% endif %}
+
+      {% if student.shields_used < student.shields_total %}
+      <p style="margin-top: 8px; font-size: 0.8125rem; color: var(--accent-amber);">
+        You have {{ student.shields_total - student.shields_used }} Streak Shield{{ 's' if (student.shields_total - student.shields_used) > 1 }} remaining.
+        Use one to protect your streak?
+      </p>
+      <button class="btn btn-success" style="margin-top: 12px;"
+              onclick="useShield({{ day.day }})" id="shield-btn-{{ day.day }}">
+        🛡️ Use Streak Shield
+      </button>
+      {% else %}
+      <p style="margin-top: 8px; font-size: 0.8125rem; color: var(--text-muted);">
+        No Streak Shields remaining.
+      </p>
+      {% endif %}
+    </div>
+
+
+    <!-- ═══ COMPLETED STATE ═══ -->
+    {% elif day.status == 'completed' %}
+
+    <!-- Task Description -->
+    <div class="task-section page-enter" style="animation-delay: 0.15s;">
+      <div class="task-description">
+        <p>{{ day.description }}</p>
+      </div>
+    </div>
+
+    <!-- Objectives (all checked) -->
+    {% if day.objectives %}
+    <div class="objectives-card page-enter" style="animation-delay: 0.2s;">
+      <h3>📋 Objectives</h3>
+      {% for obj in day.objectives %}
+      <div class="objective-item">
+        <div class="objective-check checked">✓</div>
+        <span class="objective-text" style="text-decoration: line-through; color: var(--text-muted);">{{ obj }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Resources -->
+    {% if day.resources %}
+    <div class="resources-card page-enter" style="animation-delay: 0.25s;">
+      <h3>📚 Resources</h3>
+      {% for resource in day.resources %}
+      {% set parts = resource.split(' — ') %}
+      <a href="{{ parts[1] if parts | length > 1 else '#' }}" target="_blank" rel="noopener" class="resource-link">
+        <span class="resource-link-icon">🔗</span>
+        {{ parts[0] }}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Completed Submission -->
+    <div class="completed-submission page-enter" style="animation-delay: 0.3s;">
+      <div class="completed-header">
+        <div class="completed-icon">✅</div>
+        <h3>Day Completed!</h3>
+      </div>
+
+      {% if day.github_url %}
+      <a href="{{ day.github_url }}" target="_blank" rel="noopener" class="completed-link">
+        <span class="completed-link-icon">📂</span>
+        {{ day.github_url | truncate(50) }}
+      </a>
+      {% endif %}
+
+      {% if day.linkedin_url %}
+      <a href="{{ day.linkedin_url }}" target="_blank" rel="noopener" class="completed-link">
+        <span class="completed-link-icon">💼</span>
+        {{ day.linkedin_url | truncate(50) }}
+      </a>
+      {% endif %}
+
+      {% if day.submitted_at %}
+      <p class="completed-time">
+        Submitted on {{ day.submitted_at[:10] }} at {{ day.submitted_at[11:16] }}
+      </p>
+      {% endif %}
+    </div>
+
+
+    <!-- ═══ CURRENT STATE (Submit Form) ═══ -->
+    {% elif day.status == 'current' %}
+
+    <!-- Task Description -->
+    <div class="task-section page-enter" style="animation-delay: 0.15s;">
+      <div class="task-description">
+        <p>{{ day.description }}</p>
+      </div>
+    </div>
+
+    <!-- Objectives (interactive checkboxes) -->
+    {% if day.objectives %}
+    <div class="objectives-card page-enter" style="animation-delay: 0.2s;">
+      <h3>📋 Objectives</h3>
+      {% for obj in day.objectives %}
+      <div class="objective-item">
+        <div class="objective-check" onclick="toggleObjective(this)" role="checkbox" aria-checked="false" tabindex="0">
+        </div>
+        <span class="objective-text">{{ obj }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Resources -->
+    {% if day.resources %}
+    <div class="resources-card page-enter" style="animation-delay: 0.25s;">
+      <h3>📚 Resources</h3>
+      {% for resource in day.resources %}
+      {% set parts = resource.split(' — ') %}
+      <a href="{{ parts[1] if parts | length > 1 else '#' }}" target="_blank" rel="noopener" class="resource-link">
+        <span class="resource-link-icon">🔗</span>
+        {{ parts[0] }}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Submission Form -->
+    <div class="submission-section page-enter" style="animation-delay: 0.3s;">
+      <div class="submission-card">
+        <h3>📤 Submit Your Work</h3>
+
+        <form class="submission-form" id="submission-form" onsubmit="submitDay(event)">
+
+          <div class="input-group">
+            <label for="github-url">GitHub Repository / Commit URL</label>
+            <input type="url" id="github-url" name="github_url" class="input-field"
+                   placeholder="https://github.com/you/repo/commit/..."
+                   required>
+            <span class="input-hint">Your full project source. Must be public and cloneable.</span>
+          </div>
+
+          <div class="input-group">
+            <label for="linkedin-url">LinkedIn Post URL</label>
+            <input type="url" id="linkedin-url" name="linkedin_url" class="input-field"
+                   placeholder="https://linkedin.com/posts/...">
+            <span class="input-hint">Share what you built today with your network.</span>
+          </div>
+
+          <!-- LinkedIn Post Generator -->
+          <button type="button" class="generate-post-btn" onclick="generatePost()">
+            ✍️ Generate LinkedIn Post
+          </button>
+
+          <div class="submission-divider">or just submit</div>
+
+          <button type="submit" class="btn btn-success btn-block btn-lg" id="submit-btn">
+            🚀 Submit Day {{ day.day }}
+          </button>
+        </form>
+      </div>
+    </div>
+
+    {% endif %}
+
+  </div>
+</div>
+
+
+<!-- ═══ LinkedIn Post Generator Modal ═══ -->
+<div class="modal-overlay" id="post-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>✍️ LinkedIn Post</h3>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 12px;">
+        Edit this draft, then copy and paste it to LinkedIn.
+      </p>
+      <textarea id="generated-post" readonly></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary btn-block" onclick="copyPost()">
+        📋 Copy to Clipboard
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ Toast Notification ═══ -->
+<div class="toast" id="toast"></div>
+
+
+<!-- ═══ BOTTOM NAV ═══ -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="/" class="nav-item">
+      <span class="nav-item-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="/dashboard" class="nav-item">
+      <span class="nav-item-icon">📊</span>
+      <span>Dashboard</span>
+    </a>
+    <a href="/day/{{ day.day }}" class="nav-item active">
+      <span class="nav-item-icon">📝</span>
+      <span>Day {{ day.day }}</span>
+    </a>
+    <a href="#" class="nav-item">
+      <span class="nav-item-icon">👤</span>
+      <span>Profile</span>
+    </a>
+  </div>
+</nav>
+
+
+<!-- ═══ Day-specific data for JS ═══ -->
+<script>
+  window.dayData = {
+    day: {{ day.day }},
+    title: "{{ day.title }}",
+    track: "{{ student.track }}",
+    status: "{{ day.status }}"
+  };
+</script>
+
+{% endblock %}
