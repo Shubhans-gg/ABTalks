@@ -24,12 +24,12 @@
     <!-- Day Navigation -->
     <div class="day-header page-enter">
       <div class="day-nav">
-        {% if prev_day %}
+        {% if prev_day is not none %}
         <a href="/day/{{ prev_day }}" class="day-nav-btn">
           ← Day {{ prev_day }}
         </a>
         {% else %}
-        <span class="day-nav-btn disabled">← Day 0</span>
+        <span class="day-nav-btn disabled">← Start</span>
         {% endif %}
 
         <span style="font-size: 0.8125rem; color: var(--text-muted);">{{ day.day }}/60</span>
@@ -327,10 +327,6 @@
     <a href="/day/{{ day.day }}" class="nav-item active">
       <span class="nav-item-icon">📝</span>
       <span>Day {{ day.day }}</span>
-    </a>
-    <a href="#" class="nav-item">
-      <span class="nav-item-icon">👤</span>
-      <span>Profile</span>
     </a>
   </div>
 </nav>

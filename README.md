@@ -56,7 +56,7 @@ This redesign reimagines the student experience for late-night mobile usage on s
 
 ### 🛡️ 1. Streak Shields
 * **Problem**: Missing a single day due to exams or emergencies often causes complete demotivation and dropouts.
-* **Solution**: Students earn **Streak Shields** (2 per challenge). Activating a shield retroactively protects an active streak on a missed day without breaking momentum.
+* **Solution**: Students earn **Streak Shields** (6 per challenge). Activating a shield retroactively protects an active streak on a missed day without breaking momentum.
 
 ### ✍️ 2. One-Click LinkedIn Post Generator
 * **Problem**: Students often struggle with writing daily LinkedIn posts, creating friction in building in public.

@@ -64,8 +64,15 @@ def challenge_day(day_number):
             "status": "locked",
         }
 
-    prev_day = day_number - 1 if day_number > 1 else None
-    next_day = day_number + 1 if day_number <= 60 else None
+    # Customize student object for Day 0 (new user state with 0 streak)
+    if day_number == 0:
+        student = dict(student)
+        student["streak"] = 0
+        student["total_completed"] = 0
+        student["best_streak"] = 0
+
+    prev_day = day_number - 1 if day_number >= 1 else None
+    next_day = day_number + 1 if day_number < 60 else None
 
     return render_template(
         "day.html",
@@ -125,7 +132,7 @@ def use_shield():
         {
             "success": True,
             "message": f"Shield activated for Day {day_num}! Your streak is protected. 🛡️",
-            "shields_remaining": 1,
+            "shields_remaining": 5,
         }
     )
 

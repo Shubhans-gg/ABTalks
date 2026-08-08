@@ -11,7 +11,7 @@
     "best_streak": 6,
     "total_completed": 10,
     "total_days": 60,
-    "shields_total": 2,
+    "shields_total": 6,
     "shields_used": 0,
     "github_username": "arjunsharma-dev",
     "linkedin_username": "arjun-sharma-dev",
@@ -41,6 +41,25 @@
     ]
   },
   "days": [
+    {
+      "day": 0,
+      "title": "Welcome & Orientation",
+      "description": "Welcome to the ABTalks 60-Day Coding Challenge! Today is Day 0 — your onboarding day. Set up your workspace, prepare your GitHub environment, and get ready to start building your streak tomorrow.",
+      "objectives": [
+        "Set up your local development environment (Git, VS Code, Node/Python)",
+        "Create or link your public GitHub repository for the 60-day streak",
+        "Bookmark your track curriculum & resources",
+        "Post your commitment on LinkedIn (#ABTalks60DayChallenge)"
+      ],
+      "resources": [
+        "Git & GitHub Setup Guide — https://docs.github.com/en/get-started",
+        "Markdown Cheatsheet for Documentation — https://www.markdownguide.org/cheat-sheet/"
+      ],
+      "difficulty": "Orientation",
+      "estimated_time": "30 mins",
+      "xp_reward": 50,
+      "status": "current"
+    },
     {
       "day": 1,
       "title": "Environment Setup & Hello World",
