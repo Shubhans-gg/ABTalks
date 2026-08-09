@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block title %}Dashboard — AB Talks{% endblock %}
-{% block meta_description %}Track your 60-day coding challenge progress. View your streak, today's task, and achievements.{% endblock %}
+{% block meta_description %}Track your 60-day coding challenge progress. View your streak, today's task, and
+achievements.{% endblock %}
 
 {% block body %}
 
@@ -41,7 +42,8 @@
       <div class="matrix-header-new">
         <div>
           <div class="matrix-title-new">60-Day Progress Matrix</div>
-          <div class="matrix-subtitle-new">{{ student.total_completed }} of {{ student.total_days }} Days Completed ({{ completion }}%)</div>
+          <div class="matrix-subtitle-new">{{ student.total_completed }} of {{ student.total_days }} Days Completed ({{
+            completion }}%)</div>
         </div>
         <div class="matrix-percentage-new">{{ completion }}%</div>
       </div>
@@ -52,11 +54,11 @@
 
       <div class="matrix-grid-new">
         {% for d in range(1, 61) %}
-          {% set day_matches = days | selectattr('day', 'equalto', d) | list %}
-          {% set status = day_matches[0].status if day_matches | length > 0 else 'locked' %}
-          <a href="/day/{{ d }}" class="matrix-box-new {{ status }}">
-            {{ d }}
-          </a>
+        {% set day_matches = days | selectattr('day', 'equalto', d) | list %}
+        {% set status = day_matches[0].status if day_matches | length > 0 else 'locked' %}
+        <a href="/day/{{ d }}" class="matrix-box-new {{ status }}">
+          {{ d }}
+        </a>
         {% endfor %}
       </div>
 
@@ -98,9 +100,9 @@
     <!-- 4. Today's Challenge -->
     {% set today = namespace(day=none) %}
     {% for d in days %}
-      {% if d.status == 'current' %}
-        {% set today.day = d %}
-      {% endif %}
+    {% if d.status == 'current' %}
+    {% set today.day = d %}
+    {% endif %}
     {% endfor %}
 
     {% if today.day %}
@@ -135,7 +137,8 @@
         </div>
         <div class="summary-row-new">
           <span class="summary-lbl-new">Days Missed</span>
-          <span class="summary-val-new red">{{ days | selectattr('status', 'equalto', 'missed') | list | length }}</span>
+          <span class="summary-val-new red">{{ days | selectattr('status', 'equalto', 'missed') | list | length
+            }}</span>
         </div>
         <div class="summary-row-new">
           <span class="summary-lbl-new">Best Streak</span>

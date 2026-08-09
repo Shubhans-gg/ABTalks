@@ -37,14 +37,14 @@ This redesign reimagines the student experience for late-night mobile usage on s
 
 ### 2. Student Dashboard (`/dashboard`)
 * **Streak Counter**: Prominent fire animation with current active streak count.
-* **Progress Ring**: SVG ring showing overall completion progress (e.g. 10 of 60 days).
+* **60-Day Progress Matrix**: Interactive grid with **solid high-contrast color states** (Emerald Green for Completed, Solid Rose for Missed, Glowing Cyan for Today) and smooth **3D hover pop-up zoom micro-animations**.
 * **Today's Action Card**: Direct shortcut to the active day's challenge with difficulty, time estimate, and XP rewards.
 * **XP & Standing**: Real-time XP display and student leaderboard ranking.
-* **Weekly Timeline**: Visual tracker showing completed (✓), missed (✕), active (◉), and locked (🔒) days.
 * **Badges & Achievements**: Visual badges unlocked through milestones.
 
 ### 3. Challenge Day Experience (`/day/12`)
 * **Task Specification**: Title, estimated effort, difficulty, and step-by-step description.
+* **Smart Header Navigation**: Includes a dynamic **"Jump to Today"** button on past/future days allowing 1-click navigation back to the student's active current day.
 * **Interactive Objectives**: Checkable task list for real-time progress tracking.
 * **Curated Resources**: Quick links to documentation, guides, and tools.
 * **Proof of Work Submission**: Form for submitting GitHub repository/commit and LinkedIn post URLs.
@@ -52,7 +52,7 @@ This redesign reimagines the student experience for late-night mobile usage on s
 
 ---
 
-## 💡 Thoughtful Features Introduced
+## 💡 Thoughtful Features & Experience Enhancements
 
 ### 🛡️ 1. Streak Shields
 * **Problem**: Missing a single day due to exams or emergencies often causes complete demotivation and dropouts.
@@ -70,6 +70,7 @@ This redesign reimagines the student experience for late-night mobile usage on s
 * **Missed Day (`/day/5`)**: Highlights missed status with option to use a Streak Shield.
 * **Completed Day (`/day/1`)**: Displays verified badge, submission links, and timestamp.
 * **Locked Future Days (`/day/14`)**: Graceful locked state preventing premature submissions.
+* **Off-Day Navigation**: Seamless 1-click return to the current active day from any historical or future day view.
 
 ---
 
@@ -77,7 +78,7 @@ This redesign reimagines the student experience for late-night mobile usage on s
 
 * **Backend**: Python 3.14 + Flask 3.1.3
 * **Templating**: Jinja2 (Modular layout inheritance)
-* **Frontend**: Vanilla CSS3 (Custom Design System with CSS variables, Glassmorphism, Responsive Breakpoints) & Vanilla JavaScript (ES6+, IntersectionObserver animations)
+* **Frontend**: Vanilla CSS3 (Custom Design System with CSS variables, Glassmorphism, Micro-animations, Responsive Breakpoints) & Vanilla JavaScript (ES6+, IntersectionObserver animations)
 * **Data**: Local JSON dataset (`data/mock_data.json`)
 
 ---
@@ -86,7 +87,7 @@ This redesign reimagines the student experience for late-night mobile usage on s
 
 ```
 abtalks/
-├── app.py                  # Flask server & route handlers
+├── app.py                  # Flask server, route handlers & smart current day resolver
 ├── data/
 │   └── mock_data.json      # Structured mock data (students, days, tracks)
 ├── templates/

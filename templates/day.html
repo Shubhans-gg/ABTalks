@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block title %}Day {{ day.day }} — {{ day.title }} — AB Talks{% endblock %}
-{% block meta_description %}Day {{ day.day }} of the 60-day coding challenge: {{ day.title }}. Build, commit, and share your progress.{% endblock %}
+{% block meta_description %}Day {{ day.day }} of the 60-day coding challenge: {{ day.title }}. Build, commit, and share
+your progress.{% endblock %}
 
 {% block body %}
 
@@ -32,15 +33,21 @@
         <span class="day-nav-btn disabled">← Start</span>
         {% endif %}
 
-        <span style="font-size: 0.8125rem; color: var(--text-muted);">{{ day.day }}/60</span>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+          <span style="font-size: 0.8125rem; color: var(--text-muted);">{{ day.day }}/60</span>
+          {% if actual_current_day and day.day != actual_current_day %}
+          <a href="/day/{{ actual_current_day }}" class="btn btn-sm"
+            style="background: var(--glass-bg); font-size: 0.65rem; padding: 2px 8px; color: var(--text-muted); border: 1px solid var(--border-subtle);">Jump
+            to Today</a>
+          {% endif %}
+        </div>
 
-        {% if next_day and next_day <= 60 %}
-        <a href="/day/{{ next_day }}" class="day-nav-btn">
+        {% if next_day and next_day <= 60 %} <a href="/day/{{ next_day }}" class="day-nav-btn">
           Day {{ next_day }} →
-        </a>
-        {% else %}
-        <span class="day-nav-btn disabled">Day 61 →</span>
-        {% endif %}
+          </a>
+          {% else %}
+          <span class="day-nav-btn disabled">Day 61 →</span>
+          {% endif %}
       </div>
 
       <!-- Day Title -->
@@ -70,7 +77,9 @@
           {% elif day.status == 'current' %}
           <span class="badge badge-cyan">◉ Today</span>
           {% elif day.status == 'locked' %}
-          <span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid var(--border-subtle);">🔒 Locked</span>
+          <span class="badge"
+            style="background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid var(--border-subtle);">🔒
+            Locked</span>
           {% endif %}
         </div>
       </div>
@@ -124,20 +133,21 @@
       <p>This day was not completed during the challenge.</p>
       {% endif %}
 
-      {% if student.shields_used < student.shields_total %}
-      <p style="margin-top: 8px; font-size: 0.8125rem; color: var(--accent-amber);">
-        You have {{ student.shields_total - student.shields_used }} Streak Shield{{ 's' if (student.shields_total - student.shields_used) > 1 }} remaining.
+      {% if student.shields_used < student.shields_total %} <p
+        style="margin-top: 8px; font-size: 0.8125rem; color: var(--accent-amber);">
+        You have {{ student.shields_total - student.shields_used }} Streak Shield{{ 's' if (student.shields_total -
+        student.shields_used) > 1 }} remaining.
         Use one to protect your streak?
-      </p>
-      <button class="btn btn-success" style="margin-top: 12px;"
-              onclick="useShield({{ day.day }})" id="shield-btn-{{ day.day }}">
-        🛡️ Use Streak Shield
-      </button>
-      {% else %}
-      <p style="margin-top: 8px; font-size: 0.8125rem; color: var(--text-muted);">
-        No Streak Shields remaining.
-      </p>
-      {% endif %}
+        </p>
+        <button class="btn btn-success" style="margin-top: 12px;" onclick="useShield({{ day.day }})"
+          id="shield-btn-{{ day.day }}">
+          🛡️ Use Streak Shield
+        </button>
+        {% else %}
+        <p style="margin-top: 8px; font-size: 0.8125rem; color: var(--text-muted);">
+          No Streak Shields remaining.
+        </p>
+        {% endif %}
     </div>
 
 
@@ -255,15 +265,14 @@
           <div class="input-group">
             <label for="github-url">GitHub Repository / Commit URL</label>
             <input type="url" id="github-url" name="github_url" class="input-field"
-                   placeholder="https://github.com/you/repo/commit/..."
-                   required>
+              placeholder="https://github.com/you/repo/commit/..." required>
             <span class="input-hint">Your full project source. Must be public and cloneable.</span>
           </div>
 
           <div class="input-group">
             <label for="linkedin-url">LinkedIn Post URL</label>
             <input type="url" id="linkedin-url" name="linkedin_url" class="input-field"
-                   placeholder="https://linkedin.com/posts/...">
+              placeholder="https://linkedin.com/posts/...">
             <span class="input-hint">Share what you built today with your network.</span>
           </div>
 
@@ -336,9 +345,9 @@
 <script>
   window.dayData = {
     day: {{ day.day }},
-    title: "{{ day.title }}",
+  title: "{{ day.title }}",
     track: "{{ student.track }}",
-    status: "{{ day.status }}"
+      status: "{{ day.status }}"
   };
 </script>
 

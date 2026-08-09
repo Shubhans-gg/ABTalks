@@ -50,6 +50,9 @@ def challenge_day(day_number):
     # Find the requested day
     day = next((d for d in days if d["day"] == day_number), None)
 
+    # Determine the actual current day for navigation
+    actual_current_day = student.get("current_day")
+
     # Generate a locked placeholder if day doesn't exist in mock data
     if day is None:
         day = {
@@ -81,6 +84,7 @@ def challenge_day(day_number):
         days=days,
         prev_day=prev_day,
         next_day=next_day,
+        actual_current_day=actual_current_day,
     )
 
 
